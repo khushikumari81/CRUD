@@ -1,0 +1,62 @@
+@model MuetStudentPortal.Models.Student
+
+@{
+    ViewData["Title"] = "Student Profile";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card card-custom p-4 p-md-5">
+            <div class="d-flex justify-content-between align-items-start mb-4 pb-3 border-bottom">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-primary text-white p-3 rounded-circle d-flex align-items-center justify-content-center" style="width: 55px; height: 55px;">
+                        <span class="h4 mb-0 fw-bold">@Model.FullName.Substring(0, 1).ToUpper()</span>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold mb-0">@Model.FullName</h3>
+                        <span class="badge bg-primary-subtle text-primary border border-primary-subtle">
+                            @Model.RollNumber
+                        </span>
+                    </div>
+                </div>
+                <span class="badge bg-secondary-subtle text-dark border px-3 py-2">
+                    Batch @Model.Batch
+                </span>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-sm-6">
+                    <div class="text-muted small">Department</div>
+                    <div class="fw-semibold fs-6">@Model.Department</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">Cumulative GPA</div>
+                    <div class="fw-bold fs-5 text-primary">@Model.Cgpa.ToString("0.00") / 4.00</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">Email Address</div>
+                    <div class="fw-medium">@Model.Email</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">Contact Phone</div>
+                    <div class="fw-medium">@Model.PhoneNumber</div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-muted small">Enrollment Date</div>
+                    <div class="fw-medium">@Model.EnrollmentDate.ToString("MMMM dd, yyyy")</div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-5 pt-3 border-top">
+                <a asp-action="Index" class="btn btn-light border px-4">Back</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary-muet px-4 d-inline-flex align-items-center gap-2">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                    Edit
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
