@@ -1,0 +1,118 @@
+@model MuetStudentPortal.Models.Student
+
+@{
+    ViewData["Title"] = "Enroll Student";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card card-custom p-4 p-md-5">
+            <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
+                <div class="bg-primary-subtle text-primary p-3 rounded-circle">
+                    <!-- User Plus SVG -->
+                    <svg class="svg-icon" style="width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7.5" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="fw-bold mb-0">Register MUET Student</h3>
+                    <p class="text-muted small mb-0">Fill in the student details to store in the SQL Server database.</p>
+                </div>
+            </div>
+
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="row g-3">
+                    <!-- Roll Number -->
+                    <div class="col-md-6">
+                        <label asp-for="RollNumber" class="form-label fw-semibold"></label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">#</span>
+                            <input asp-for="RollNumber" class="form-control" placeholder="e.g. 21SW015" />
+                        </div>
+                        <span asp-validation-for="RollNumber" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Full Name -->
+                    <div class="col-md-6">
+                        <label asp-for="FullName" class="form-label fw-semibold"></label>
+                        <input asp-for="FullName" class="form-control" placeholder="Enter Full Name" />
+                        <span asp-validation-for="FullName" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="col-md-6">
+                        <label asp-for="Department" class="form-label fw-semibold"></label>
+                        <select asp-for="Department" class="form-select">
+                            <option value="">-- Select Department --</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                            <option value="Computer Systems Engineering">Computer Systems Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                            <option value="Civil Engineering">Civil Engineering</option>
+                            <option value="Mechanical Engineering">Mechanical Engineering</option>
+                            <option value="Telecommunication Engineering">Telecommunication Engineering</option>
+                            <option value="Electronics Engineering">Electronics Engineering</option>
+                            <option value="Biomedical Engineering">Biomedical Engineering</option>
+                        </select>
+                        <span asp-validation-for="Department" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Batch Year -->
+                    <div class="col-md-6">
+                        <label asp-for="Batch" class="form-label fw-semibold"></label>
+                        <input asp-for="Batch" type="number" class="form-control" placeholder="e.g. 2021" value="2021" />
+                        <span asp-validation-for="Batch" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label fw-semibold"></label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="student@muet.edu.pk" />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div class="col-md-6">
+                        <label asp-for="PhoneNumber" class="form-label fw-semibold"></label>
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="0300-1234567" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                    </div>
+
+                    <!-- CGPA -->
+                    <div class="col-md-6">
+                        <label asp-for="Cgpa" class="form-label fw-semibold"></label>
+                        <input asp-for="Cgpa" type="number" step="0.01" class="form-control" placeholder="3.50" />
+                        <span asp-validation-for="Cgpa" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Enrollment Date -->
+                    <div class="col-md-6">
+                        <label asp-for="EnrollmentDate" class="form-label fw-semibold"></label>
+                        <input asp-for="EnrollmentDate" class="form-control" />
+                        <span asp-validation-for="EnrollmentDate" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                    <a asp-action="Index" class="btn btn-light border px-4">Cancel</a>
+                    <button type="submit" class="btn btn-primary-muet px-4 d-inline-flex align-items-center gap-2">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                            <polyline points="7 3 7 8 15 8"></polyline>
+                        </svg>
+                        Save Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
